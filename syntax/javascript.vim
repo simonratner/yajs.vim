@@ -269,7 +269,7 @@ syntax keyword javascriptClassKeyword          class nextgroup=javascriptClassNa
 syntax keyword javascriptClassSuper            super
 syntax match   javascriptClassName             contained /\k\+/ nextgroup=javascriptClassBlock,javascriptClassExtends skipwhite
 syntax keyword javascriptClassExtends          contained extends nextgroup=javascriptClassName skipwhite
-syntax region  javascriptClassBLock            contained matchgroup=javascriptBraces start=/{/ end=/}/ contains=javascriptMethodName,javascriptMethodAccessor,javascriptClassStatic
+syntax region  javascriptClassBlock            contained matchgroup=javascriptBraces start=/{/ end=/}/ contains=javascriptMethodName,javascriptMethodAccessor,javascriptClassStatic
 syntax keyword javascriptClassStatic           contained static nextgroup=javascriptMethodName,javascriptMethodAccessor skipwhite
 
 
