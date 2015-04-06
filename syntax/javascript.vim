@@ -249,8 +249,10 @@ syntax keyword javascriptExport                export module
 syntax region  javascriptBlock                 matchgroup=javascriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=@htmlJavaScript
 
 syntax region  javascriptMethodDef             contained start=/\(\(\(set\|get\)\_s\+\)\?\)[a-zA-Z_$]\k*\_s*(/ end=/)/ contains=javascriptMethodAccessor,javascriptMethodName,javascriptFuncArg nextgroup=javascriptBlock skipwhite keepend
+syntax region  javascriptMethodArgs            contained start=/(/ end=/)/ contains=javascriptFuncArg nextgroup=javascriptBlock skipwhite keepend
 syntax keyword javascriptMethodAccessor        contained get set
-syntax match   javascriptMethodName            contained /[a-zA-Z_$]\k*\ze\_s*(/
+syntax match   javascriptMethodName            contained /[a-zA-Z_$]\k*/ nextgroup=javascriptMethodArgs skipwhite skipempty
+syntax region  javascriptMethodName            contained matchgroup=javascriptPropertyName start=/\[/ end=/]/ contains=@javascriptValue nextgroup=javascriptMethodArgs skipwhite skipempty
 
 syntax keyword javascriptAsyncFuncKeyword      async await
 " syntax keyword javascriptFuncKeyword           function nextgroup=javascriptFuncName,javascriptFuncArg skipwhite
@@ -267,8 +269,8 @@ syntax keyword javascriptClassKeyword          class nextgroup=javascriptClassNa
 syntax keyword javascriptClassSuper            super
 syntax match   javascriptClassName             contained /\k\+/ nextgroup=javascriptClassBlock,javascriptClassExtends skipwhite
 syntax keyword javascriptClassExtends          contained extends nextgroup=javascriptClassName skipwhite
-syntax region  javascriptClassBLock            contained matchgroup=javascriptBraces start=/{/ end=/}/ contains=javascriptMethodDef,javascriptClassStatic
-syntax keyword javascriptClassStatic           contained static nextgroup=javascriptMethodDef skipwhite
+syntax region  javascriptClassBLock            contained matchgroup=javascriptBraces start=/{/ end=/}/ contains=javascriptMethodName,javascriptMethodAccessor,javascriptClassStatic
+syntax keyword javascriptClassStatic           contained static nextgroup=javascriptMethodName,javascriptMethodAccessor skipwhite
 
 
 syntax keyword javascriptForComprehension      contained for nextgroup=javascriptForComprehensionTail skipwhite skipempty
