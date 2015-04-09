@@ -306,9 +306,9 @@ syntax cluster javascriptSymbols               contains=javascriptOpSymbols,java
 syntax region  javascriptEventFuncCallArg      contained matchgroup=javascriptParens start=/(/ end=/)/ contains=@javascriptEventExpression
 
 syntax match   javascriptArrowFuncDef          contained /([^)]*)\_s*=>/ contains=javascriptFuncArg,javascriptArrowFunc nextgroup=javascriptBlock skipwhite skipempty
-syntax match   javascriptArrowFuncDef          contained /[a-zA-Z_]\k*\_s*=>/ contains=javascriptArrowFuncArg,javascriptArrowFunc nextgroup=javascriptBlock skipwhite skipempty
+syntax match   javascriptArrowFuncDef          contained /[a-zA-Z_$][a-zA-Z0-9_$]*\_s*=>/ contains=javascriptArrowFuncArg,javascriptArrowFunc nextgroup=javascriptBlock skipwhite skipempty
 syntax match   javascriptArrowFunc             /=>/
-syntax match   javascriptArrowFuncArg          contained /[a-zA-Z_]\k*/
+syntax match   javascriptArrowFuncArg          contained /[a-zA-Z_$]\k*/
 
 if exists("did_javascript_hilink")
   HiLink javascriptReserved             Error
