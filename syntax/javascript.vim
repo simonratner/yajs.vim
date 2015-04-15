@@ -41,7 +41,7 @@ endif
 
 "Dollar sign is permitted anywhere in an identifier
 setlocal iskeyword-=$
-if main_syntax == 'javascript'
+if &filetype == 'javascript'
   setlocal iskeyword+=$
   syntax cluster htmlJavaScript                 contains=TOP
 endif
