@@ -250,8 +250,9 @@ syntax region  javascriptBlock                 matchgroup=javascriptBraces start
 
 syntax region  javascriptMethodDef             contained start=/\(\(\(set\|get\)\_s\+\)\?\)[a-zA-Z_$]\k*\_s*(/ end=/)/ contains=javascriptMethodAccessor,javascriptMethodName,javascriptFuncArg nextgroup=javascriptBlock skipwhite keepend
 syntax region  javascriptMethodArgs            contained start=/(/ end=/)/ contains=javascriptFuncArg,@javascriptComments nextgroup=javascriptBlock skipwhite keepend
-syntax keyword javascriptMethodAccessor        contained get set
 syntax match   javascriptMethodName            contained /[a-zA-Z_$]\k*/ nextgroup=javascriptMethodArgs skipwhite skipempty
+syntax match   javascriptMethodAccessor        contained /\(set\|get\)\s\+\ze\k/ contains=javascriptMethodAccessorWords
+syntax keyword javascriptMethodAccessorWords   contained get set
 syntax region  javascriptMethodName            contained matchgroup=javascriptPropertyName start=/\[/ end=/]/ contains=@javascriptValue nextgroup=javascriptMethodArgs skipwhite skipempty
 
 syntax keyword javascriptAsyncFuncKeyword      async await
