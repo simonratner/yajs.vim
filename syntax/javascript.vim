@@ -149,7 +149,7 @@ syntax match   javascriptObjectLabel           contained /\k\+\_s*:/he=e-1 nextg
 " syntax match   javascriptPropertyName          contained /'[^']\+'\s*:/he=e-1 nextgroup=@javascriptValue skipwhite skipempty
 syntax region  javascriptPropertyName          contained start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\_s*:\|$/he=e-1 nextgroup=@javascriptValue skipwhite skipempty
 syntax region  javascriptComputedPropertyName  contained matchgroup=javascriptPropertyName start=/\[/rs=s+1 end=/]\_s*:/he=e-1 contains=@javascriptValue nextgroup=@javascriptValue skipwhite skipempty
-syntax region  javascriptComputedProperty      contained matchgroup=javascriptProperty start=/\[/rs=s+1 end=/]/he=e-1 contains=@javascriptValue,@javascriptSymbols nextgroup=@javascriptAfterIdentifier skipwhite skipempty
+syntax region  javascriptComputedProperty      contained matchgroup=javascriptProperty start=/\[/rs=s+1 end=/]/ contains=@javascriptValue,@javascriptSymbols nextgroup=@javascriptAfterIdentifier skipwhite skipempty
 " Value for object, statement for label statement
 
 syntax cluster javascriptTemplates             contains=javascriptTemplate,javascriptTemplateSubstitution,javascriptTemplateSBlock,javascriptTemplateSString,javascriptTemplateSStringRB,javascriptTemplateSB
@@ -176,7 +176,7 @@ syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoR
 syntax keyword javascriptPrototype             prototype
 
 "Program Keywords
-syntax keyword javascriptIdentifier            arguments this
+syntax keyword javascriptIdentifier            arguments this nextgroup=@javascriptAfterIdentifier
 syntax keyword javascriptVariable              let var const
 syntax keyword javascriptOperator              delete new instanceof typeof void in nextgroup=@javascriptValue,@javascriptTypes skipwhite skipempty
 syntax keyword javascriptForOperator           contained in of
