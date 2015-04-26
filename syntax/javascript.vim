@@ -162,7 +162,7 @@ syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoR
 "import,javascriptRegexpString,javascriptPropertyName
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved in instanceof let new return super
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved switch throw try typeof var
-syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved void while with
+syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved void while with yield
 
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved enum implements package protected static
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved interface private public abstract boolean
@@ -193,6 +193,7 @@ syntax keyword javascriptBranch                break continue
 syntax keyword javascriptCase                  case nextgroup=@javascriptTypes skipwhite
 syntax keyword javascriptDefault               default
 syntax keyword javascriptStatementKeyword      return with yield
+syntax keyword javascriptYield                 yield
 
 syntax keyword javascriptTry                   try
 syntax keyword javascriptExceptions            catch throw finally
@@ -300,7 +301,7 @@ syntax region  javascriptRegexpString          start="\(^\|&\||\|=\|(\|{\|;\)\@<
 syntax cluster javascriptEventTypes            contains=javascriptEventString,javascriptTemplate,javascriptNumber,javascriptBoolean,javascriptNull
 syntax cluster javascriptOps                   contains=javascriptOpSymbols,javascriptLogicSymbols,javascriptOperator
 syntax region  javascriptParenExp              matchgroup=javascriptParens start=/(/ end=/)/ contains=@javascriptExpression nextgroup=@javascriptSymbols skipwhite skipempty
-syntax cluster javascriptExpression            contains=javascriptArrowFuncDef,javascriptParenExp,@javascriptValue,javascriptObjectLiteral,javascriptFuncKeyword,javascriptIdentifierName,javascriptRegexpString,@javascriptTypes,@javascriptOps,javascriptGlobal,jsxRegion
+syntax cluster javascriptExpression            contains=javascriptArrowFuncDef,javascriptParenExp,@javascriptValue,javascriptObjectLiteral,javascriptFuncKeyword,javascriptYield,javascriptIdentifierName,javascriptRegexpString,@javascriptTypes,@javascriptOps,javascriptGlobal,jsxRegion
 syntax cluster javascriptEventExpression       contains=javascriptArrowFuncDef,javascriptParenExp,@javascriptValue,javascriptObjectLiteral,javascriptFuncKeyword,javascriptIdentifierName,javascriptRegexpString,@javascriptEventTypes,@javascriptOps,javascriptGlobal,jsxRegion
 
 syntax region  javascriptLoopParen             contained matchgroup=javascriptParens start=/(/ end=/)/ contains=javascriptVariable,javascriptForOperator,javascriptEndColons,@javascriptExpression nextgroup=javascriptBlock skipwhite skipempty
@@ -365,6 +366,7 @@ if exists("did_javascript_hilink")
   HiLink javascriptOfComprehension      Repeat
   HiLink javascriptForOperator          Repeat
   HiLink javascriptStatementKeyword     Statement
+  HiLink javascriptYield                Statement
   HiLink javascriptMessage              Keyword
   HiLink javascriptOperator             Identifier
   " HiLink javascriptType                 Type
