@@ -57,12 +57,12 @@ syntax match   shellbang "^#!.*iojs\>"
 syntax keyword javascriptCommentTodo           contained TODO FIXME XXX TBD
 syntax match   javascriptLineComment           "//.*" contains=@Spell,javascriptCommentTodo
 syntax region  javascriptComment               start="/\*"  end="\*/" contains=@Spell,javascriptCommentTodo extend
-syntax cluster javascriptComments              contains=javascriptComment,javascriptLineComment
+syntax cluster javascriptComments              contains=javascriptDocComment,javascriptComment,javascriptLineComment
 
 "JSDoc
 syntax case ignore
 
-syntax region  javascriptDocComment            matchgroup=javascriptComment start="/\*\*"  end="\*/" contains=javascriptDocNotation,javascriptCommentTodo,@Spell fold keepend
+syntax region  javascriptDocComment            start="/\*\*"  end="\*/" contains=javascriptDocNotation,javascriptCommentTodo,@Spell fold keepend
 syntax match   javascriptDocNotation           contained /@/ nextgroup=javascriptDocTags
 
 syntax keyword javascriptDocTags               contained constant constructor constructs function ignore inner private public readonly static
