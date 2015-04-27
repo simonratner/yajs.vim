@@ -193,6 +193,7 @@ syntax keyword javascriptBranch                break continue
 syntax keyword javascriptCase                  case nextgroup=@javascriptTypes skipwhite
 syntax keyword javascriptDefault               default
 syntax keyword javascriptStatementKeyword      return with yield
+syntax keyword javascriptReturn                return nextgroup=@javascriptValue skipwhite skipempty
 syntax keyword javascriptYield                 yield
 
 syntax keyword javascriptTry                   try
@@ -366,6 +367,7 @@ if exists("did_javascript_hilink")
   HiLink javascriptOfComprehension      Repeat
   HiLink javascriptForOperator          Repeat
   HiLink javascriptStatementKeyword     Statement
+  HiLink javascriptReturn               Statement
   HiLink javascriptYield                Statement
   HiLink javascriptMessage              Keyword
   HiLink javascriptOperator             Identifier
