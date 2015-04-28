@@ -246,7 +246,7 @@ runtime syntax/yajs/event.vim
 syntax region  javascriptEventString           contained start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\|$/ contains=javascriptASCII,@events
 
 "Import
-syntax region  javascriptImportDef             start=/import/ end=/;\|\n/ contains=javascriptImport,javascriptString
+syntax region  javascriptImportDef             start=/import/ end=/;\|\n/ contains=javascriptImport,javascriptString,javascriptEndColons
 syntax keyword javascriptImport                contained from as import
 syntax keyword javascriptExport                export module
 
