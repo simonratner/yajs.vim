@@ -193,7 +193,7 @@ syntax keyword javascriptBranch                break continue
 syntax keyword javascriptCase                  case nextgroup=@javascriptTypes skipwhite
 syntax keyword javascriptDefault               default
 syntax keyword javascriptStatementKeyword      return with yield
-syntax keyword javascriptReturn                return nextgroup=@javascriptValue skipwhite skipempty
+syntax keyword javascriptReturn                return nextgroup=@javascriptValue skipwhite
 syntax keyword javascriptYield                 yield
 
 syntax keyword javascriptTry                   try
