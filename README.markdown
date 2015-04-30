@@ -23,8 +23,17 @@ Credits
 - Zhao Yi, Claudio Fleiner, Scott Shattuck (This file is based on their hard work)
 - gumnos (From the #vim IRC Channel in Freenode) (Who helped me figured out the crazy Vim Regexes)
 
+Report Issue
+------------
+
+Please send issue report to [github](https://github.com/othree/yajs.vim/issues). Provde sample code to help me debug.
+
 Changes
 -------
+
+### Version 1.5
+- Lots of bug Fix
+- Support semantic highlight
 
 ### Version 1.4
 - Better Array Comprehesion support
