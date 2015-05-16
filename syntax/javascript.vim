@@ -273,7 +273,8 @@ syntax match   javascriptFuncComma             contained /,/
 syntax keyword javascriptClassKeyword          class nextgroup=javascriptClassName skipwhite
 syntax keyword javascriptClassSuper            super
 syntax match   javascriptClassName             contained /\k\+/ nextgroup=javascriptClassBlock,javascriptClassExtends skipwhite
-syntax keyword javascriptClassExtends          contained extends nextgroup=javascriptClassName skipwhite
+syntax match   javascriptClassSuperName        contained /[a-zA-Z_$][a-zA-Z_$\[\]\.]*/ nextgroup=javascriptClassBlock skipwhite
+syntax keyword javascriptClassExtends          contained extends nextgroup=javascriptClassSuperName skipwhite
 syntax region  javascriptClassBlock            contained matchgroup=javascriptBraces start=/{/ end=/}/ contains=javascriptMethodName,javascriptMethodAccessor,javascriptClassStatic,@javascriptComments
 syntax keyword javascriptClassStatic           contained static nextgroup=javascriptMethodName,javascriptMethodAccessor skipwhite
 
@@ -398,6 +399,7 @@ if exists("did_javascript_hilink")
   HiLink javascriptClassKeyword         Keyword
   HiLink javascriptClassExtends         Keyword
   HiLink javascriptClassName            Function
+  HiLink javascriptClassSuperName       Function
   HiLink javascriptClassStatic          StorageClass
   HiLink javascriptClassSuper           keyword
 
