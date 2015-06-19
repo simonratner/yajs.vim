@@ -63,7 +63,7 @@ syntax cluster javascriptComments              contains=javascriptDocComment,jav
 syntax case ignore
 
 syntax region  javascriptDocComment            start="/\*\*"  end="\*/" contains=javascriptDocNotation,javascriptCommentTodo,@Spell fold keepend
-syntax match   javascriptDocNotation           contained /@/ nextgroup=javascriptDocTags
+syntax match   javascriptDocNotation           contained / @/ nextgroup=javascriptDocTags
 
 syntax keyword javascriptDocTags               contained constant constructor constructs function ignore inner private public readonly static
 syntax keyword javascriptDocTags               contained const dict expose inheritDoc interface nosideeffects override protected struct
@@ -86,9 +86,13 @@ syntax keyword javascriptDocTags               contained summary todo license pr
 
 syntax keyword javascriptDocTags               contained borrows exports nextgroup=javascriptDocA skipwhite
 syntax keyword javascriptDocTags               contained param arg argument property prop module nextgroup=javascriptDocNamedParamType,javascriptDocParamName skipwhite
+syntax keyword javascriptDocTags               contained type nextgroup=javascriptDocParamType skipwhite
 syntax keyword javascriptDocTags               contained define enum extends implements this typedef nextgroup=javascriptDocParamType skipwhite
 syntax keyword javascriptDocTags               contained return returns throws exception nextgroup=javascriptDocParamType,javascriptDocParamName skipwhite
 syntax keyword javascriptDocTags               contained see nextgroup=javascriptDocRef skipwhite
+
+"syntax for event firing
+syntax keyword javascriptDocTags               contained emits fires nextgroup=javascriptDocEventRef skipwhite
 
 syntax keyword javascriptDocTags               contained function func method nextgroup=javascriptDocName skipwhite
 syntax match   javascriptDocName               contained /\h\w*/
@@ -97,7 +101,7 @@ syntax keyword javascriptDocTags               contained fires event nextgroup=j
 syntax match   javascriptDocEventRef           contained /\h\w*#\(\h\w*\:\)\?\h\w*/
 
 syntax match   javascriptDocNamedParamType     contained /{.\+}/ nextgroup=javascriptDocParamName skipwhite
-syntax match   javascriptDocParamName          contained /\[\?[0-9a-zA-Z_\.]\+\]\?/ nextgroup=javascriptDocDesc skipwhite
+syntax match   javascriptDocParamName          contained /\[\?[0-9a-zA-Z_\.]\+=\?[0-9a-zA-Z_\.]*\]\?/ nextgroup=javascriptDocDesc skipwhite
 syntax match   javascriptDocParamType          contained /{.\+}/ nextgroup=javascriptDocDesc skipwhite
 syntax match   javascriptDocA                  contained /\%(#\|\w\|\.\|:\|\/\)\+/ nextgroup=javascriptDocAs skipwhite
 syntax match   javascriptDocAs                 contained /\s*as\s*/ nextgroup=javascriptDocB skipwhite
