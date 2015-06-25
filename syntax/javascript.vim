@@ -297,6 +297,7 @@ syntax region  javascriptObjectLiteral         contained matchgroup=javascriptBr
 " syntax match   javascriptOpSymbols             /[^+\-*/%\^=!<>&|?]\@<=\(<\|>\|<=\|>=\|==\|!=\|===\|!==\|+\|-\|*\|%\|++\|--\|<<\|>>\|>>>\|&\||\|^\|!\|\~\|&&\|||\|?\|=\|+=\|-=\|*=\|%=\|<<=\|>>=\|>>>=\|&=\||=\|^=\|\/\|\/=\)\ze\_[^+\-*/%\^=!<>&|?]/ nextgroup=@javascriptExpression skipwhite
 syntax match   javascriptOpSymbols             /[^+\-*/%\^=!<>&|?:]\@<=\(<\|>\|<=\|>=\|==\|!=\|===\|!==\|+\|*\|%\|++\|--\|<<\|>>\|>>>\|&\||\|^\|!\|\~\|&&\|||\|?\|=\|+=\|-=\|*=\|%=\|<<=\|>>=\|>>>=\|&=\||=\|^=\|\/\|\/=\)\ze\_[^+\-*/%\^=!<>&|?:]/ nextgroup=@javascriptExpression skipwhite skipempty
 syntax match   javascriptOpSymbols             /[^+\-*/%\^=!<>&|?:]\@<=\(:\)\ze\_[^+\-*/%\^=!<>&|?:]/ nextgroup=@javascriptStatement,javascriptCase skipwhite skipempty
+syn region  htmlScriptTag     contained start=+<script+ end=+>+ fold contains=htmlTagN,htmlString,htmlArg,htmlValue,htmlTagError,htmlEvent
 syntax match   javascriptWOpSymbols            contained /\_s\+/ nextgroup=javascriptOpSymbols
 syntax match   javascriptEndColons             /[;,]/
 syntax match   javascriptLogicSymbols          /[^&|]\@<=\(&&\|||\)\ze\_[^&|]/ nextgroup=@javascriptExpression skipwhite skipempty
