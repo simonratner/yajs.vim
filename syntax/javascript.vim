@@ -304,7 +304,7 @@ syntax match   javascriptLogicSymbols          /[^&|]\@<=\(&&\|||\)\ze\_[^&|]/ n
 syntax cluster javascriptSymbols               contains=javascriptOpSymbols,javascriptLogicSymbols
 syntax match   javascriptWSymbols              contained /\_s\+/ nextgroup=@javascriptSymbols
 
-syntax region  javascriptRegexpString          start="\(^\|&\||\|=\|(\|{\|;\|:\|\[\)\@<=\_s*/[^/*]"me=e-1 skip="\\\\\|[^\\]\@<=\\/" end="/[gimy]\{0,2\}" oneline
+syntax region  javascriptRegexpString          start="\(^\|&\||\|=\|(\|{\|;\|:\|\[\|!\)\@<=\_s*/[^/*]"me=e-1 skip="\\\\\|[^\\]\@<=\\/" end="/[gimy]\{0,2\}" oneline
 
 syntax cluster javascriptEventTypes            contains=javascriptEventString,javascriptTemplate,javascriptNumber,javascriptBoolean,javascriptNull
 syntax cluster javascriptOps                   contains=javascriptOpSymbols,javascriptLogicSymbols,javascriptOperator
