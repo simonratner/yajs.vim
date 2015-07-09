@@ -16,6 +16,12 @@ And I want to do lots of changes, including ES6 and other not confirmed standard
 Also, one of my goal is produce 100% correct syntax.
 But it hurt performance, so I prefer to create a new one instead of merge back.
 
+### Installation
+
+Use pathogen or vundle is recommended. Vundle:
+
+    Plugin 'othree/yajs.vim'
+
 Credits
 -------
 
