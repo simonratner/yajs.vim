@@ -52,8 +52,8 @@ syntax sync fromstart
 syntax match   shellbang "^#!.*node\>"
 syntax match   shellbang "^#!.*iojs\>"
 
-syntax match   javascriptOpSymbols            /[+\-*/%\^=!<>&|?:]\+/ contains=javascriptOpSymbol nextgroup=@javascriptExpression skipwhite skipempty
-syntax match   javascriptOpSymbols            /:\ze\_[^+\-*/%\^=!<>&|?:]/ nextgroup=@javascriptStatement,javascriptCase skipwhite skipempty
+syntax match   javascriptOpSymbols             /[+\-*/%\^=!<>&|?:]\+/ contains=javascriptOpSymbol nextgroup=@javascriptExpression skipwhite skipempty
+syntax match   javascriptOpSymbols             /:\ze\_[^+\-*/%\^=!<>&|?:]/ nextgroup=@javascriptStatement,javascriptCase skipwhite skipempty
 
 "JavaScript comments
 syntax keyword javascriptCommentTodo           contained TODO FIXME XXX TBD
