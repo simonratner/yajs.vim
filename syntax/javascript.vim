@@ -318,7 +318,8 @@ syntax match   javascriptParens                /[()]/
 syntax region  htmlScriptTag     contained start=+<script+ end=+>+ fold contains=htmlTagN,htmlString,htmlArg,htmlValue,htmlTagError,htmlEvent
 syntax match   javascriptWOpSymbols            contained /\_s\+/ nextgroup=javascriptOpSymbols
 syntax match   javascriptEndColons             /[;,]/
-syntax match   javascriptLogicSymbols          /[^&|]\@<=\(&&\|||\)\ze\_[^&|]/ nextgroup=@javascriptExpression skipwhite skipempty
+syntax match   javascriptLogicSymbols          /[&|]\+/ contains=javascriptLogicSymbol nextgroup=@javascriptExpression skipwhite skipempty
+syntax match   javascriptLogicSymbol           /\(&&\|||\)/ nextgroup=javascriptInvalidOp
 syntax cluster javascriptSymbols               contains=javascriptOpSymbols,javascriptLogicSymbols
 syntax match   javascriptWSymbols              contained /\_s\+/ nextgroup=@javascriptSymbols
 
@@ -350,8 +351,8 @@ if exists("did_javascript_hilink")
   HiLink javascriptInvalidOp            Error
 
   HiLink javascriptEndColons            Exception
-  HiLink javascriptOpSymbols            Normal
-  HiLink javascriptLogicSymbols         Boolean
+  HiLink javascriptOpSymbol             Normal
+  HiLink javascriptLogicSymbol          Boolean
   HiLink javascriptBraces               Function
   HiLink javascriptParens               Normal
   HiLink javascriptComment              Comment
