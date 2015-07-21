@@ -55,6 +55,24 @@ syntax match   shellbang "^#!.*iojs\>"
 syntax match   javascriptOpSymbols             /[+\-*/%\^=!<>&|?:]\+/ contains=javascriptOpSymbol nextgroup=@javascriptComments,@javascriptExpression skipwhite skipempty
 syntax match   javascriptOpSymbols             /:\ze\_[^+\-*/%\^=!<>&|?:]/ nextgroup=@javascriptComments,@javascriptStatement,javascriptCase skipwhite skipempty
 
+syntax match   javascriptInvalidOp             contained /[+\-*/%\^=!<>&|?:]\+/ 
+
+syntax match   javascriptOpSymbol              contained /\(===\|==\|=\)/ nextgroup=javascriptInvalidOp skipwhite skipempty " 3
+syntax match   javascriptOpSymbol              contained /!\+/ nextgroup=javascriptInvalidOp skipwhite skipempty " 1
+syntax match   javascriptOpSymbol              contained /\(!==\|!=\)/ nextgroup=javascriptInvalidOp skipwhite skipempty " 2
+syntax match   javascriptOpSymbol              contained /\(>>>=\|>>>\|>>=\|>>\|>=\|>\)/ nextgroup=javascriptInvalidOp skipwhite skipempty " 6
+syntax match   javascriptOpSymbol              contained /\(<<=\|<<\|<=\|<\)/ nextgroup=javascriptInvalidOp skipwhite skipempty " 4
+syntax match   javascriptOpSymbol              contained /\(++\|+=\|+\)/ nextgroup=javascriptInvalidOp skipwhite skipempty " 3
+syntax match   javascriptOpSymbol              contained /\(--\|-=\|-\)/ nextgroup=javascriptInvalidOp skipwhite skipempty " 3
+syntax match   javascriptOpSymbol              contained /\(||\||=\||\)/ nextgroup=javascriptInvalidOp skipwhite skipempty " 3
+syntax match   javascriptOpSymbol              contained /\(&&\|&=\|&\)/ nextgroup=javascriptInvalidOp skipwhite skipempty " 3
+syntax match   javascriptOpSymbol              contained /\(*=\|*\)/ nextgroup=javascriptInvalidOp skipwhite skipempty " 2
+syntax match   javascriptOpSymbol              contained /\(%=\|%\)/ nextgroup=javascriptInvalidOp skipwhite skipempty " 2
+syntax match   javascriptOpSymbol              contained /\(\/=\|\/\)/ nextgroup=javascriptInvalidOp skipwhite skipempty " 2
+syntax match   javascriptOpSymbol              contained /\(^\|\~\|?\)/ nextgroup=javascriptInvalidOp skipwhite skipempty " 3
+" 37 operators
+" syntax match   javascriptOpSymbol              contained /\(<\|>\|<=\|>=\|==\|!=\|===\|!==\|+\|*\|%\|++\|--\|<<\|>>\|>>>\|&\||\|^\|!\|\~\|&&\|||\|?\|=\|+=\|-=\|*=\|%=\|<<=\|>>=\|>>>=\|&=\||=\|^=\|\/\|\/=\)/ nextgroup=javascriptInvalidOp skipwhite skipempty
+
 "JavaScript comments
 syntax keyword javascriptCommentTodo           contained TODO FIXME XXX TBD
 syntax region  javascriptLineComment           start="//" end="\n" contains=@Spell,javascriptCommentTodo 
@@ -297,8 +315,6 @@ syntax region  javascriptObjectLiteral         contained matchgroup=javascriptBr
 " syntax match   javascriptBraces                /[\[\]]/
 syntax match   javascriptParens                /[()]/
 " syntax match   javascriptOpSymbols             /[^+\-*/%\^=!<>&|?]\@<=\(<\|>\|<=\|>=\|==\|!=\|===\|!==\|+\|-\|*\|%\|++\|--\|<<\|>>\|>>>\|&\||\|^\|!\|\~\|&&\|||\|?\|=\|+=\|-=\|*=\|%=\|<<=\|>>=\|>>>=\|&=\||=\|^=\|\/\|\/=\)\ze\_[^+\-*/%\^=!<>&|?]/ nextgroup=@javascriptExpression skipwhite
-" syntax match   javascriptInvalidOp            contained /[+\-*/%\^=!<>&|?:]\+/ 
-syntax match   javascriptOpSymbol              contained /\(<\|>\|<=\|>=\|==\|!=\|===\|!==\|+\|*\|%\|++\|--\|<<\|>>\|>>>\|&\||\|^\|!\|\~\|&&\|||\|?\|=\|+=\|-=\|*=\|%=\|<<=\|>>=\|>>>=\|&=\||=\|^=\|\/\|\/=\)\ze\_[^+\-*/%\^=!<>&|?:]/ nextgroup=javascriptInvalidOp skipwhite skipempty
 syntax region  htmlScriptTag     contained start=+<script+ end=+>+ fold contains=htmlTagN,htmlString,htmlArg,htmlValue,htmlTagError,htmlEvent
 syntax match   javascriptWOpSymbols            contained /\_s\+/ nextgroup=javascriptOpSymbols
 syntax match   javascriptEndColons             /[;,]/
@@ -331,6 +347,7 @@ runtime syntax/semhl.vim
 
 if exists("did_javascript_hilink")
   HiLink javascriptReserved             Error
+  HiLink javascriptInvalidOp            Error
 
   HiLink javascriptEndColons            Exception
   HiLink javascriptOpSymbols            Normal
