@@ -323,8 +323,9 @@ syntax match   javascriptLogicSymbol           /\(&&\|||\)/ nextgroup=javascript
 syntax cluster javascriptSymbols               contains=javascriptOpSymbols,javascriptLogicSymbols
 syntax match   javascriptWSymbols              contained /\_s\+/ nextgroup=@javascriptSymbols
 
-syntax region  javascriptRegexpString          start="\(^\|&\||\|=\|(\|{\|;\|:\|\[\|!\)\@<=\_s*/\ze[^/*]" skip="\\\\\|[^\\]\@<=\\/" end="/[gimy]\{0,2\}" oneline contains=javascriptRegexpSet
+syntax region  javascriptRegexpString          start="\(^\|&\||\|=\|(\|{\|;\|:\|\[\|!\)\@<=\_s*/\ze[^/*]" skip="\\\\\|[^\\]\@<=\\/" end="/[gimy]\{0,2\}" oneline contains=javascriptRegexpSet,javascriptRegexpLeftBracket
 syntax region  javascriptRegexpSet             contained start="\[" skip="\\\]" end="\]" extend transparent 
+syntax match   javascriptRegexpLeftBracket     contained /\\\[/ 
 
 syntax cluster javascriptEventTypes            contains=javascriptEventString,javascriptTemplate,javascriptNumber,javascriptBoolean,javascriptNull
 syntax cluster javascriptOps                   contains=javascriptOpSymbols,javascriptLogicSymbols,javascriptOperator
@@ -379,6 +380,7 @@ if exists("did_javascript_hilink")
   HiLink javascriptTemplateSStringRB    javascriptTemplateSubstitution
   HiLink javascriptTemplateSB           javascriptTemplateSubstitution
   HiLink javascriptRegexpString         String
+  HiLink javascriptRegexpLeftBracket    javascriptRegexpString
   HiLink javascriptGlobal               Constant
   HiLink javascriptCharacter            Character
   HiLink javascriptPrototype            Type
