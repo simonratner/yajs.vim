@@ -276,6 +276,7 @@ syntax keyword javascriptImport                contained from as import
 syntax keyword javascriptExport                export module
 
 syntax region  javascriptBlock                 matchgroup=javascriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=@htmlJavaScript
+syntax region  javascriptFuncBlock             contained matchgroup=javascriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=@htmlJavaScript fold
 
 syntax region  javascriptMethodDef             contained start=/\(\(\(set\|get\)\_s\+\)\?\)[a-zA-Z_$]\k*\_s*(/ end=/)/ contains=javascriptMethodAccessor,javascriptMethodName,javascriptFuncArg nextgroup=javascriptBlock skipwhite keepend
 syntax region  javascriptMethodArgs            contained start=/(/ end=/)/ contains=javascriptFuncArg,@javascriptComments nextgroup=javascriptBlock skipwhite keepend
@@ -290,7 +291,7 @@ syntax keyword javascriptFuncKeyword           function nextgroup=javascriptAsyn
 syntax match   javascriptSyncFunc              contained // nextgroup=javascriptFuncName,javascriptFuncArg skipwhite skipempty
 syntax match   javascriptAsyncFunc             contained /\s*\*\s*/ nextgroup=javascriptFuncName,javascriptFuncArg skipwhite skipempty
 syntax match   javascriptFuncName              contained /[a-zA-Z_$]\k*/ nextgroup=javascriptFuncArg skipwhite
-syntax match   javascriptFuncArg               contained /(\_[^()]*)/ contains=javascriptParens,javascriptFuncKeyword,javascriptFuncComma nextgroup=javascriptBlock skipwhite skipwhite skipempty
+syntax match   javascriptFuncArg               contained /(\_[^()]*)/ contains=javascriptParens,javascriptFuncKeyword,javascriptFuncComma nextgroup=javascriptFuncBlock skipwhite skipwhite skipempty
 syntax match   javascriptFuncComma             contained /,/
 
 
