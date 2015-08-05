@@ -287,8 +287,6 @@ syntax match   javascriptMethodAccessor        contained /\(set\|get\)\s\+\ze\k/
 syntax keyword javascriptMethodAccessorWords   contained get set
 syntax region  javascriptMethodName            contained matchgroup=javascriptPropertyName start=/\[/ end=/]/ contains=@javascriptValue nextgroup=javascriptMethodArgs skipwhite skipempty
 
-syntax keyword javascriptAsyncFuncKeyword      async await
-" syntax keyword javascriptFuncKeyword           function nextgroup=javascriptFuncName,javascriptFuncArg skipwhite
 syntax keyword javascriptFuncKeyword           function nextgroup=javascriptAsyncFunc,javascriptSyncFunc
 syntax match   javascriptSyncFunc              contained // nextgroup=javascriptFuncName,javascriptFuncArg skipwhite skipempty
 syntax match   javascriptAsyncFunc             contained /\s*\*\s*/ nextgroup=javascriptFuncName,javascriptFuncArg skipwhite skipempty
@@ -418,7 +416,6 @@ if exists("did_javascript_hilink")
   HiLink javascriptMethodName           Function
   HiLink javascriptMethodAccessor       Operator
 
-  HiLink javascriptAsyncFuncKeyword     Keyword
   HiLink javascriptFuncKeyword          Keyword
   HiLink javascriptAsyncFunc            Keyword
   HiLink javascriptArrowFunc            Type
