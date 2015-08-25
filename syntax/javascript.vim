@@ -325,7 +325,7 @@ syntax cluster javascriptSymbols               contains=javascriptOpSymbols,java
 syntax match   javascriptWSymbols              contained /\_s\+/ nextgroup=@javascriptSymbols
 
 syntax region  javascriptRegexpString          start="\(^\|&\||\|=\|(\|{\|;\|:\|\[\|!\|?\)\@<=\_s*/\ze[^/*]" skip="\\\\\|[^\\]\@<=\\/" end="/[gimy]\{0,2\}" oneline contains=javascriptRegexpSet,javascriptRegexpLeftBracket
-syntax region  javascriptRegexpSet             contained start="\[" skip="\\\]" end="\]" extend transparent 
+syntax region  javascriptRegexpSet             contained start="\[" skip="[^\\]\@<=\\\]" end="\]" extend transparent 
 syntax match   javascriptRegexpLeftBracket     contained /\\\[/ 
 
 syntax cluster javascriptEventTypes            contains=javascriptEventString,javascriptTemplate,javascriptNumber,javascriptBoolean,javascriptNull
