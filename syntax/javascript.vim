@@ -59,7 +59,7 @@ syntax match   javascriptInvalidOp             contained /[+\-*/%\^=!<>&|?:]\+/
 
 syntax match   javascriptOpSymbol              contained /\(:\|=\|?\)/ nextgroup=@javascriptExpression,javascriptInvalidOp skipwhite skipempty " 3
 syntax match   javascriptOpSymbol              contained /\(===\|==\)/ nextgroup=javascriptInvalidOp skipwhite skipempty " 2
-syntax match   javascriptOpSymbol              contained /!\+/ nextgroup=javascriptInvalidOp skipwhite skipempty " 1
+syntax match   javascriptOpSymbol              contained /!\+/ nextgroup=javascriptRegexpString,javascriptInvalidOp skipwhite skipempty " 1
 syntax match   javascriptOpSymbol              contained /\(!==\|!=\)/ nextgroup=javascriptInvalidOp skipwhite skipempty " 2
 syntax match   javascriptOpSymbol              contained /\(>>>=\|>>>\|>>=\|>>\|>=\|>\)/ nextgroup=javascriptInvalidOp skipwhite skipempty " 6
 syntax match   javascriptOpSymbol              contained /\(<<=\|<<\|<=\|<\)/ nextgroup=javascriptInvalidOp skipwhite skipempty " 4
