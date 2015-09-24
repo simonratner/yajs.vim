@@ -123,7 +123,7 @@ syntax keyword javascriptDocTags               contained fires event nextgroup=j
 syntax match   javascriptDocEventRef           contained /\h\w*#\(\h\w*\:\)\?\h\w*/
 
 syntax match   javascriptDocNamedParamType     contained /{.\+}/ nextgroup=javascriptDocParamName skipwhite
-syntax match   javascriptDocParamName          contained /\[\?[0-9a-zA-Z_\.]\+=\?[0-9a-zA-Z_\.]*\]\?/ nextgroup=javascriptDocDesc skipwhite
+syntax match   javascriptDocParamName          contained /\(\[.\{-}\]\|[0-9a-zA-Z_\.]\+\)/ nextgroup=javascriptDocDesc skipwhite
 syntax match   javascriptDocParamType          contained /{.\+}/ nextgroup=javascriptDocDesc skipwhite
 syntax match   javascriptDocA                  contained /\%(#\|\w\|\.\|:\|\/\)\+/ nextgroup=javascriptDocAs skipwhite
 syntax match   javascriptDocAs                 contained /\s*as\s*/ nextgroup=javascriptDocB skipwhite
