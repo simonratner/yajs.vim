@@ -279,8 +279,10 @@ runtime syntax/yajs/event.vim
 syntax region  javascriptEventString           contained start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\|$/ contains=javascriptASCII,@events
 
 "Import
-syntax region  javascriptImportDef             start=/import/ end=/;\|\n/ contains=javascriptImport,javascriptString,javascriptEndColons
+syntax region  javascriptImportDef             start=/import/ end=/;\|\n/ contains=javascriptImport,javascriptImportBlock,javascriptString,javascriptEndColons
 syntax keyword javascriptImport                contained from as import
+syntax keyword javascriptImportAs              contained as
+syntax region  javascriptImportBlock           matchgroup=javascriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=javascriptImportAs
 syntax keyword javascriptExport                export module
 
 syntax region  javascriptBlock                 matchgroup=javascriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=@htmlJavaScript
@@ -417,6 +419,7 @@ if exists("did_javascript_hilink")
   HiLink javascriptLabel                Label
   HiLink javascriptPropertyName         Label
   HiLink javascriptImport               Special
+  HiLink javascriptImportAs             Special
   HiLink javascriptExport               Special
   HiLink javascriptTry                  Special
   HiLink javascriptExceptions           Special
