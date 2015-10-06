@@ -9,6 +9,8 @@ Yet Another JavaScript Syntax file for Vim. Key differences:
 * Remove old, unused syntax definitions.
 * Support ES6 new syntax, ex: arrow function `=>`. 
 
+For ES7 features such as `async`, `awiat`. Please install [es.next.syntax.vim](https://github.com/othree/es.next.syntax.vim).
+
 ### Differences from jelera/vim-javascript-syntax
 
 I start a new project instead of send PR to jelera is because: jelera/vim-javascript-syntax is not so active. 
