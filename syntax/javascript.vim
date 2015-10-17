@@ -298,7 +298,7 @@ syntax region  javascriptMethodName            contained matchgroup=javascriptPr
 syntax match   javascriptSyncFunc              contained /\s*/ nextgroup=javascriptFuncName,javascriptFuncArg
 syntax match   javascriptAsyncFunc             contained /\s*\*\s*/ nextgroup=javascriptFuncName,javascriptFuncArg skipwhite skipempty
 syntax match   javascriptFuncName              contained /[a-zA-Z_$]\k*/ nextgroup=javascriptFuncArg skipwhite
-syntax region  javascriptFuncArg               contained start=/(/ end=/)/ matchgroup=javascriptParens contains=javascriptFuncKeyword,javascriptFuncComma,javascriptDefaultAssign,@javascriptComments nextgroup=javascriptBlock skipwhite skipwhite skipempty
+syntax region  javascriptFuncArg               contained matchgroup=javascriptParens start=/(/ end=/)/ contains=javascriptFuncKeyword,javascriptFuncComma,javascriptDefaultAssign,@javascriptComments nextgroup=javascriptBlock skipwhite skipwhite skipempty
 
 " syntax match   javascriptFuncArg               contained /(\_[^()]*)/ contains=javascriptParens,javascriptFuncKeyword,javascriptFuncComma,javascriptDefaultAssign,@javascriptComments nextgroup=javascriptBlock skipwhite skipwhite skipempty
 syntax match   javascriptFuncComma             contained /,/
@@ -347,12 +347,12 @@ syntax cluster javascriptEventExpression       contains=javascriptArrowFuncDef,j
 syntax region  javascriptLoopParen             contained matchgroup=javascriptParens start=/(/ end=/)/ contains=javascriptVariable,javascriptForOperator,javascriptEndColons,@javascriptExpression nextgroup=javascriptBlock skipwhite skipempty
 
 " syntax match   javascriptFuncCall              contained /[a-zA-Z]\k*\ze(/ nextgroup=javascriptFuncCallArg
-syntax region  javascriptFuncCallArg           contained matchgroup=javascriptParens start=/(/ end=/)/ contains=@javascriptExpression,@javascriptComments nextgroup=@javascriptAfterIdentifier
+syntax region  javascriptFuncCallArg           contained matchgroup=javascriptParens start=/(/ end=/)/ contains=javascriptFuncComma,@javascriptExpression,@javascriptComments nextgroup=@javascriptAfterIdentifier
 syntax cluster javascriptSymbols               contains=javascriptOpSymbols,javascriptLogicSymbols
 " syntax match   javascriptWSymbols              contained /\_s\+/ nextgroup=@javascriptSymbols
 syntax region  javascriptEventFuncCallArg      contained matchgroup=javascriptParens start=/(/ end=/)/ contains=@javascriptEventExpression,@javascriptComments
 
-syntax match   javascriptArrowFuncDef          contained /([^)]*)\_s*=>/ contains=javascriptFuncArg,javascriptArrowFunc nextgroup=javascriptOperator,javascriptIdentifierName,javascriptBlock,javascriptArrowFuncDef skipwhite skipempty
+syntax match   javascriptArrowFuncDef          contained /([^)]*)\_s*=>/ contains=javascriptParens,javascriptFuncArg,javascriptFuncComma,javascriptArrowFunc nextgroup=javascriptOperator,javascriptIdentifierName,javascriptBlock,javascriptArrowFuncDef skipwhite skipempty
 syntax match   javascriptArrowFuncDef          contained /[a-zA-Z_$][a-zA-Z0-9_$]*\_s*=>/ contains=javascriptArrowFuncArg,javascriptArrowFunc nextgroup=javascriptOperator,javascriptIdentifierName,javascriptBlock,javascriptArrowFuncDef skipwhite skipempty
 syntax match   javascriptArrowFunc             /=>/
 syntax match   javascriptArrowFuncArg          contained /[a-zA-Z_$]\k*/
