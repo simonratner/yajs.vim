@@ -52,10 +52,10 @@ syntax sync fromstart
 syntax match   shellbang "^#!.*node\>"
 syntax match   shellbang "^#!.*iojs\>"
 
-syntax match   javascriptOpSymbols             /[+\-*/%\^=!<>&|?:]\+/ contains=javascriptOpSymbol nextgroup=@javascriptComments,@javascriptExpression skipwhite skipempty
-syntax match   javascriptOpSymbols             /:\ze\_[^+\-*/%\^=!<>&|?:]/ nextgroup=@javascriptComments,@javascriptStatement,javascriptCase skipwhite skipempty
+syntax match   javascriptOpSymbols             /[+\-*/%\^~=!<>&|?:]\+/ contains=javascriptOpSymbol nextgroup=@javascriptComments,@javascriptExpression skipwhite skipempty
+syntax match   javascriptOpSymbols             /:\ze\_[^+\-*/%\^~=!<>&|?:]/ nextgroup=@javascriptComments,@javascriptStatement,javascriptCase skipwhite skipempty
 
-syntax match   javascriptInvalidOp             contained /[+\-*/%\^=!<>&|?:]\+/ 
+syntax match   javascriptInvalidOp             contained /[+\-*/%\^~=!<>&|?:]\+/
 
 syntax match   javascriptOpSymbol              contained /\(:\|=\|?\)/ nextgroup=@javascriptExpression,javascriptInvalidOp skipwhite skipempty " 3
 syntax match   javascriptOpSymbol              contained /\(===\|==\)/ nextgroup=javascriptInvalidOp skipwhite skipempty " 2
@@ -70,7 +70,7 @@ syntax match   javascriptOpSymbol              contained /\(&&\|&=\|&\)/ nextgro
 syntax match   javascriptOpSymbol              contained /\(*=\|*\)/ nextgroup=javascriptInvalidOp skipwhite skipempty " 2
 syntax match   javascriptOpSymbol              contained /\(%=\|%\)/ nextgroup=javascriptInvalidOp skipwhite skipempty " 2
 syntax match   javascriptOpSymbol              contained /\(\/=\|\/\)/ nextgroup=javascriptInvalidOp skipwhite skipempty " 2
-syntax match   javascriptOpSymbol              contained /\(^\|\~\)/ nextgroup=javascriptInvalidOp skipwhite skipempty " 2
+syntax match   javascriptOpSymbol              contained /\(\^\|\~\)/ nextgroup=javascriptInvalidOp skipwhite skipempty " 2
 
 " 37 operators
 " syntax match   javascriptOpSymbol              contained /\(<\|>\|<=\|>=\|==\|!=\|===\|!==\|+\|*\|%\|++\|--\|<<\|>>\|>>>\|&\||\|^\|!\|\~\|&&\|||\|?\|=\|+=\|-=\|*=\|%=\|<<=\|>>=\|>>>=\|&=\||=\|^=\|\/\|\/=\)/ nextgroup=javascriptInvalidOp skipwhite skipempty
