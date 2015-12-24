@@ -338,7 +338,7 @@ syntax cluster javascriptSymbols               contains=javascriptOpSymbols,java
 syntax match   javascriptWSymbols              contained /\_s\+/ nextgroup=@javascriptSymbols,@javascriptComments,javascriptDotNotation
 
 syntax region  javascriptRegexpString          start="\(^\|&\||\|=\|(\|{\|;\|:\|\[\|!\|?\)\@<=\_s*/\ze[^/*]" skip="\\\\\|[^\\]\@<=\\/" end="/[gimy]\{0,2\}" oneline contains=javascriptRegexpSet,javascriptRegexpLeftBracket
-syntax region  javascriptRegexpSet             contained start="\[" skip="[^\\]\@<=\\\]" end="\]" extend transparent 
+syntax region  javascriptRegexpSet             contained start="\[" skip="[^\\]\@<=\\\]" end="\]" extend 
 syntax match   javascriptRegexpLeftBracket     contained /\\\[/ 
 
 syntax cluster javascriptEventTypes            contains=javascriptEventString,javascriptTemplate,javascriptNumber,javascriptBoolean,javascriptNull
@@ -393,6 +393,7 @@ if exists("did_javascript_hilink")
   HiLink javascriptTemplateSStringRB    javascriptTemplateSubstitution
   HiLink javascriptTemplateSB           javascriptTemplateSubstitution
   HiLink javascriptRegexpString         String
+  HiLink javascriptRegexpSet            javascriptRegexpString
   HiLink javascriptRegexpLeftBracket    javascriptRegexpString
   HiLink javascriptGlobal               Constant
   HiLink javascriptCharacter            Character
