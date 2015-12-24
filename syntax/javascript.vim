@@ -365,7 +365,7 @@ if exists("did_javascript_hilink")
   HiLink javascriptReserved             Error
   HiLink javascriptInvalidOp            Error
 
-  HiLink javascriptEndColons            Exception
+  HiLink javascriptEndColons            Statement
   HiLink javascriptOpSymbol             Normal
   HiLink javascriptLogicSymbol          Boolean
   HiLink javascriptBraces               Function
