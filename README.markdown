@@ -41,7 +41,6 @@ Changes
 
 ### Version 1.5
 - Lots of bug Fix
-- Support semantic highlight
 
 ### Version 1.4
 - Better Array Comprehesion support
