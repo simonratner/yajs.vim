@@ -24,6 +24,10 @@ Use pathogen or vundle is recommended. Vundle:
 
     Plugin 'othree/yajs.vim'
 
+### Performance Issue
+
+**yajs.vim** is not good on performance. If you are using a slower computer. You might feel lag while moving cursor. One possible solution is change to [neovim](https://neovim.io/)
+
 Credits
 -------
 
