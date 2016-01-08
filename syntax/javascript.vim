@@ -237,7 +237,7 @@ syntax match   javascriptCaseColon             contained /:/ nextgroup=javascrip
 
 syntax match   javascriptProp                  contained /[a-zA-Z_$][a-zA-Z0-9_$]*/ contains=@props,@_semantic transparent nextgroup=@javascriptAfterIdentifier
 syntax match   javascriptMethod                contained /[a-zA-Z_$][a-zA-Z0-9_$]*\ze(/ contains=@props transparent nextgroup=javascriptFuncCallArg
-syntax match   javascriptDotNotation           /\./ nextgroup=javascriptProp,javascriptMethod
+syntax match   javascriptDotNotation           /\./ nextgroup=javascriptProp,javascriptMethod skipwhite skipempty
 syntax match   javascriptDotStyleNotation      /\.style\./ nextgroup=javascriptDOMStyle transparent
 
 runtime syntax/yajs/javascript.vim
@@ -292,7 +292,7 @@ syntax keyword javascriptExportDefault         contained default
 syntax region  javascriptBlock                 matchgroup=javascriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=@htmlJavaScript
 
 " syntax region  javascriptMethodDef             contained start=/\(\(\(set\|get\)\_s\+\)\?\)[a-zA-Z_$]\k*\_s*(/ end=/)/ contains=javascriptMethodAccessor,javascriptMethodName,javascriptFuncArg nextgroup=javascriptBlock skipwhite keepend
-syntax region  javascriptMethodDef             contained start=/\.\@<!\(\(\(set\|get\)\_s\+\|\*\s*\)\?\)[a-zA-Z_$]\k*\_s*(/ end=/)/ contains=javascriptMethodAccessor,javascriptMethodName,javascriptFuncArg nextgroup=javascriptBlock skipwhite keepend
+syntax region  javascriptMethodDef             contained start=/\(\(\(set\|get\)\_s\+\|\*\s*\)\?\)[a-zA-Z_$]\k*\_s*(/ end=/)/ contains=javascriptMethodAccessor,javascriptMethodName,javascriptFuncArg nextgroup=javascriptBlock skipwhite keepend
 syntax match   javascriptMethodName            contained /[a-zA-Z_$]\k*/ nextgroup=javascriptFuncArg skipwhite skipempty
 syntax match   javascriptMethodAccessor        contained /\(set\|get\)\s\+\ze\k/ contains=javascriptMethodAccessorWords
 syntax keyword javascriptMethodAccessorWords   contained get set
